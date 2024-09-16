@@ -12,8 +12,8 @@ export default {
         "/node_modules/(?!encore\\.dev)" // Adjust this as necessary for your dependencies
     ],
     globals: {
-        'ts-jest': {
-            // useESM: true, // Ensure ESM support
-        },
-    },
+        /*'ts-jest': {
+            tsconfig: 'tsconfig.json'
+        }*/
+    }
 };

@@ -1,5 +1,6 @@
 import {SQLDatabase} from "encore.dev/storage/sqldb";
-import { api } from "encore.dev/api";
+// import { api } from "encore.dev/api";
+import {api} from "encore.dev/api";
 
 // Initialize the database
 const db = new SQLDatabase("student", {
@@ -31,13 +32,12 @@ export const createStudent = api(
         path: "/student",
         expose: true,
     },
-    async ({ ...body }: CreateStudentRequest): Promise<Student> => {
+    async ({...body}: CreateStudentRequest): Promise<Student> => {
         try {
             // Insert the student and return the inserted row's id
             const result = await db.queryRow`
-                INSERT INTO student (name, age, email) 
-                VALUES (${body.name}, ${body.age}, ${body.email}) 
-                RETURNING id, name, age, email
+                INSERT INTO student (name, age, email)
+                VALUES (${body.name}, ${body.age}, ${body.email}) RETURNING id, name, age, email
             `;
 
             if (!result) {
@@ -72,14 +72,16 @@ export const createStudent = api(
 export const getStudent = api(
     {
         method: "GET",
-        path : "/student/:id",
+        path: "/student/:id",
         expose: true,
     },
-    async ({ id }: { id: number }): Promise<Student> => {
+    async ({id}: { id: number }): Promise<Student> => {
         try {
             // Fetch student by ID
             const result = await db.queryRow`
-                SELECT * FROM student WHERE id = ${id}
+                SELECT *
+                FROM student
+                WHERE id = ${id}
             `;
 
             if (!result) {
@@ -114,18 +116,19 @@ export const getStudent = api(
 export const updateStudent = api(
     {
         method: "PUT",
-        path : "/student/:id",
+        path: "/student/:id",
         expose: true,
     },
 
-    async ({ id, ...body }: { id: number } & CreateStudentRequest): Promise<Student> => {
+    async ({id, ...body}: { id: number } & CreateStudentRequest): Promise<Student> => {
         try {
             // Update student by ID
             const result = await db.queryRow`
-                UPDATE student 
-                SET name = ${body.name}, age = ${body.age}, email = ${body.email}
-                WHERE id = ${id}
-                RETURNING id, name, age, email
+                UPDATE student
+                SET name  = ${body.name},
+                    age   = ${body.age},
+                    email = ${body.email}
+                WHERE id = ${id} RETURNING id, name, age, email
             `;
 
             if (!result) {
@@ -159,15 +162,17 @@ export const updateStudent = api(
 // Delete student API by ID
 export const deleteStudent = api(
     {
-        method : "DELETE",
-        path : "/student/:id",
+        method: "DELETE",
+        path: "/student/:id",
         expose: true,
     },
-    async ({ id }: { id: number }): Promise<Student> => {
+    async ({id}: { id: number }): Promise<Student> => {
         try {
             // Delete student by ID
             const result = await db.queryRow`
-                DELETE FROM student WHERE id = ${id} RETURNING id
+                DELETE
+                FROM student
+                WHERE id = ${id} RETURNING id
             `;
 
             if (!result) {

@@ -1,4 +1,4 @@
-import { ServerResponse } from 'http';
+import {ServerResponse} from 'http';
 
 export async function parseRequestBody(req: NodeJS.ReadableStream): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -17,6 +17,6 @@ export async function parseRequestBody(req: NodeJS.ReadableStream): Promise<any>
 }
 
 export function sendResponse(res: ServerResponse, status: number, data: any) {
-    res.writeHead(status, { "Content-Type": "application/json" });
+    res.writeHead(status, {"Content-Type": "application/json"});
     res.end(JSON.stringify(data));
 }
