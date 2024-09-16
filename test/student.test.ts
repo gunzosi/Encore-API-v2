@@ -1,5 +1,5 @@
-import { test, describe, expect, jest, beforeEach } from "@jest/globals";
-import { createStudent, getStudent } from "../controller/student";
+import {beforeEach, describe, expect, jest, test} from "@jest/globals";
+import {createStudent, getStudent} from "../controller/student";
 
 // Mock the database functions inside createStudent and getStudent
 jest.mock("../controller/student", () => ({
@@ -57,7 +57,7 @@ describe("Student API Tests", () => {
         (getStudent as jest.Mock).mockResolvedValue(mockFetchResponse);
 
         // Call the getStudent function with a test ID
-        const response = await getStudent({ id: 1 });
+        const response = await getStudent({id: 1});
         expect(response.status).toBe(200);
         expect(response.data?.id).toBe(1);
     });
