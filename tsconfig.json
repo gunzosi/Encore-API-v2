@@ -28,5 +28,13 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "controller/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
