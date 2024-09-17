@@ -39,3 +39,32 @@ Now off you go into the clouds!
 ```bash
 encore test
 ```
+
+## Run SQL from Cloud 
+
+1. Open DOCKER 
+2. Run CMD on TERMINAL 
+
+```bash
+encore db shell  <database-name>
+```
+
+#### with DB name is "student"
+
+```bash
+encore db shell  student
+```
+
+### Connect to DB on DOCKER / CLOUD 
+
+```bash
+\c student 
+```
+```sql
+SELECT * FROM student;
+```
+
+>> Reminder `;` in SQL query 
+
+
+
