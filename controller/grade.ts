@@ -2,7 +2,7 @@ import {SQLDatabase} from "encore.dev/storage/sqldb";
 import {api} from "encore.dev/api";
 
 // Initialize the database
-const db = new SQLDatabase("grade", {
+const db = new SQLDatabase("mentorship", {
     migrations: "./migrations",
 });
 
@@ -38,8 +38,8 @@ export const createGrade = api(
             // Insert the student and return the inserted row's id
             const result = await db.queryRow`
                 INSERT INTO grade (student_id, course_id, grade, graded_date)
-                VALUES (${body.student_id}, ${body.course_id}, ${body.grade},
-                        ${body.graded_date}) RETURNING student_id, course_id, grade, graded_date
+                VALUES (${body.student_id}, ${body.course_id}, ${body.grade}, ${body.graded_date}) 
+                    RETURNING student_id, course_id, grade, graded_date
             `;
 
             if (!result) {

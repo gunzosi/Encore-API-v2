@@ -3,7 +3,7 @@ import {api} from "encore.dev/api";
 import path from 'path';
 
 // Initialize the database
-const db = new SQLDatabase("course", {
+const db = new SQLDatabase("mentorship", {
     migrations: "./migrations",
 });
 

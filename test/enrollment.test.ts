@@ -1,5 +1,5 @@
 import {beforeEach, describe, expect, jest, test} from "@jest/globals";
-import {createEnrollment, getEnrollment, updateEnrollment, deleteEnrollment} from "../controller/enrollment";
+import {createEnrollment, getEnrollmentByStudent, updateEnrollment, deleteEnrollment} from "../controller/enrollment";
 
 // Mock các hàm trong controller
 jest.mock("../controller/enrollment", () => ({
@@ -65,7 +65,7 @@ describe("Enrollment API Tests", () => {
         (getEnrollment as jest.Mock).mockResolvedValue(mockFetchResponse);
 
         // 2. Act: Gọi hàm API với test ID
-        const response = await getEnrollment({student_id: 1});
+        const response = await getEnrollmentByStudent({student_id: 1});
 
         // 3. Assert: Kiểm tra kết quả
         expect(response.status).toBe(200);
