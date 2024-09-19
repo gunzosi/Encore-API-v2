@@ -1,6 +1,6 @@
 
-import { SQLDatabase } from "encore.dev/storage/sqldb";
 import { api } from "encore.dev/api";
+import { SQLDatabase } from "encore.dev/storage/sqldb";
 
 // Initialize the database
 const db = new SQLDatabase("mentorship", {
