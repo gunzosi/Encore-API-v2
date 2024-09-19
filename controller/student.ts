@@ -25,11 +25,15 @@ type CreateStudentRequest = {
     email: string;
 };
 
+/*
+* API({config (method, path, expose},{function execution API})
+* */
+
 // Create student API
 export const createStudent = api(
     {
         method: "POST",
-        path: "/student",
+        path: "/student", // ERROR : "this path is required "/" "
         expose: true,
     },
     async ({...body}: CreateStudentRequest): Promise<Student> => {
@@ -75,7 +79,10 @@ export const getStudent = api(
         path: "/student/:id",
         expose: true,
     },
-    async ({id}: { id: number }): Promise<Student> => {
+    // Spread Operator -> ...body
+    // Specify : { id } : Data type of id is number
+    // int id
+    async ({id} : {id : number}): Promise<Student> => {
         try {
             // Fetch student by ID
             const result = await db.queryRow`
