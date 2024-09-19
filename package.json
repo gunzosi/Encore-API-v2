@@ -20,9 +20,12 @@
   },
   "dependencies": {
     "@jest/types": "^29.6.3",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
     "encore-ts-starter": "file:",
     "encore.dev": "^1.41.1",
-    "mssql": "^11.0.1"
+    "mssql": "^11.0.1",
+    "npm": "^10.8.3"
   },
   "scripts": {
     "test": "jest --config jest.config.ts"
